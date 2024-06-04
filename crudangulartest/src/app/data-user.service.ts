@@ -25,7 +25,7 @@ export class DataUserService {
     return this.http.get('http://localhost:3001/user/getList');
   }
 
-  deleteUserById(id: number) {
+  deleteUserById(id: string) {
     return this.http.delete(`http://localhost:3001/user/delete/${id}`)
   }
 

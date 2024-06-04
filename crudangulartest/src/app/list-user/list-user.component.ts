@@ -4,11 +4,13 @@ import {CommonModule} from '@angular/common';
 import {DataUserService} from "../data-user.service";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
+import Swal from "sweetalert2";
+import {FormatPhonePipe} from "../format-phone.pipe";
 
 @Component({
   selector: 'app-list-user',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FormatPhonePipe],
   templateUrl: './list-user.component.html',
   styleUrl: './list-user.component.css'
 })
@@ -18,25 +20,36 @@ export class ListUserComponent {
   }
 
   listUser: any;
+  userDelete : any;
+  deleteUser(id: string) {
+    this._http.findUserById(id).subscribe(data => {
+      this.userDelete = data
+      Swal.fire({
+        title: "Delete user " + this.userDelete.name + " ?",
+        showCancelButton: true,
+        confirmButtonText: "Delete",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._http.deleteUserById(id).subscribe(data => {
+            Swal.fire({
+              title: "Delete Success!",
+              icon: "success"
+            });
+            this.ngOnInit()
+          })
+        }
+      });
+    })
 
-  deleteUser(id: number) {
-    console.log(id)
-     if (confirm("Chac chan muon xoa ?")){
-       this._http.deleteUserById(id).subscribe(data => {
-         alert("Xoa thanh cong")
-         this.ngOnInit();
-       }, error => {
-         console.log(error)
-       })
-     }
   }
-  setIdUser(id:number){
+
+  setIdUser(id: number) {
     this.route.navigate([`/edit/${id}`])
   }
-  searchUser(name:string){
-    if (name === ""){
+  searchUser(name: string) {
+    if (name === "") {
       this.ngOnInit();
-    }else {
+    } else {
       this._http.searchUserByName(name).subscribe(data => {
         this.listUser = data
       })

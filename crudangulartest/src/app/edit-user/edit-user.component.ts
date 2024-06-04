@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DataUserService, IUser} from "../data-user.service";
 import {Router, ActivatedRoute} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-edit-user',
@@ -17,12 +18,16 @@ export class EditUserComponent {
 
   user: any
   name: any
+
   editUser(user: { id: string, name: string, address: string, phone: string }) {
     this._http.editUser(user).subscribe(status => {
       console.log("OK")
 
     })
-    alert("Sua thanh cong")
+    Swal.fire({
+      title: "Edit Success!",
+      icon: "success"
+    });
     this.router.navigate(['/'])
 
   }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataBindingComponent } from './data-binding.component';
+import { LoginComponentComponent } from './login-component.component';
 
-describe('DataBindingComponent', () => {
-  let component: DataBindingComponent;
-  let fixture: ComponentFixture<DataBindingComponent>;
+describe('LoginComponentComponent', () => {
+  let component: LoginComponentComponent;
+  let fixture: ComponentFixture<LoginComponentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DataBindingComponent]
+      imports: [LoginComponentComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DataBindingComponent);
+    fixture = TestBed.createComponent(LoginComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

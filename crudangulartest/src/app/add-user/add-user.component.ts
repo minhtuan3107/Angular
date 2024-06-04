@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {DataUserService, IUser} from '../data-user.service';
 import { Router } from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-add-user',
@@ -20,7 +21,10 @@ export class AddUserComponent {
 
       }
     );
-    alert('Thêm thành công')
+    Swal.fire({
+      title: "Add Success!",
+      icon: "success"
+    });
     this.router.navigate(['/']);
   }
 }

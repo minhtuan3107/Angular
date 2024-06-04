@@ -1,0 +1,11 @@
+<form #formLogin="ngForm" (ngSubmit)="loginAccount(formLogin.value)" method="post">
+  <div class="mb-3">
+    <label for="exampleInputName" class="form-label">UserName</label>
+    <input type="text" name="nameAccount" ngModel class="form-control" id="exampleInputName">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPhone" class="form-label">Password</label>
+    <input type="password" name="password" ngModel class="form-control" id="exampleInputPhone">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

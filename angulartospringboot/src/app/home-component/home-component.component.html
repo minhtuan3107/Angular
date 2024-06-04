@@ -1,0 +1,12 @@
+<div class="row"  [ngStyle]="{'--bs-gutter-x' : 0}">
+  <div *ngFor="let product of listProduct" class="card col-2" style="width: 18rem;" >
+    <div>
+      <img [src]="product.img" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name | formatString}}</h5>
+        <p class="card-text">{{product.price | currency:'VND'}}</p>
+        <h5 class="card-text">Loai: {{product.typeAccessory.name}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
