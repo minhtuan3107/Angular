@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {HomeComponentComponent} from "./home-component/home-component.component";
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,7 +10,7 @@ import {HomeComponentComponent} from "./home-component/home-component.component"
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angulartospringboot';
+  title = 'zxc';
   flag: boolean | undefined
 
   ngOnInit() {

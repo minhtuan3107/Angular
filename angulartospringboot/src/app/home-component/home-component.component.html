@@ -1,12 +1,19 @@
-<div class="row"  [ngStyle]="{'--bs-gutter-x' : 0}">
-  <div *ngFor="let product of listProduct" class="card col-2" style="width: 18rem;" >
+<div class="row" [ngStyle]="{'--bs-gutter-x' : 0}">
+  <div *ngFor="let product of listProduct" class="card col-2" style="width: 18rem;">
     <div>
-      <img [src]="product.img" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{product.name | formatString}}</h5>
-        <p class="card-text">{{product.price | currency:'VND'}}</p>
-        <h5 class="card-text">Loai: {{product.typeAccessory.name}}</h5>
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.price | currency:'VND' }}</p>
+        <h5 class="card-text">Loai: {{ product.typeAccessory.name }}</h5>
+        <a class="btn btn-primary" href="/detail/{{product.id}}">Chi tiet</a>
+        <a class="btn btn-primary" (click)="deleteProductById(product.id, product.name)">Xoa</a>
+        <a class="btn btn-primary" href="/edit/{{product.id}}">Sua</a>
       </div>
     </div>
   </div>
+</div>
+<div>
+  <button class="btn btn-primary" (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+  <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
 </div>

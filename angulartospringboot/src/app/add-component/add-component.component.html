@@ -1,0 +1,32 @@
+<form #formAdd="ngForm" (ngSubmit)="addNewProduct(formAdd.value)" method="post">
+  <div>
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label">Name</label>
+      <input type="text" name="name" ngModel class="form-control" id="exampleInputName">
+    </div>
+    <div class="mb-3">
+      <input type="hidden" name="date" ngModel class="form-control" id="exampleInputDate">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputDes" class="form-label">Description</label>
+      <input type="text" name="description" ngModel class="form-control" id="exampleInputDes">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPrice" class="form-label">Price</label>
+      <input type="text" name="price" ngModel class="form-control" id="exampleInputPrice">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputQuantity" class="form-label">Quantity</label>
+      <input type="text" name="quantity" ngModel class="form-control" id="exampleInputQuantity">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Type</label>
+      <select name="typeAccessory" ngModel class="form-select" aria-label="Default select example">
+        <option *ngFor="let type of typeProduct" [ngValue]="type">
+          {{ type.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
